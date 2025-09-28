@@ -45,9 +45,10 @@ while True:
 
     if game.game_over:
         if game.score == 0:
-            draw_start_screen(screen, title_font)
+            draw_start_screen(screen, title_font,game.score,(195,295))
         else:
-            draw_game_over_screen(screen, title_font)
+            draw_game_over_screen(screen, title_font,game.score,(180, 295))
+        pygame.display.flip()
     else:
         score_value_surface = title_font.render(str(game.score), True, Colors.white)
         screen.fill(Colors.dark_blue)
@@ -57,6 +58,5 @@ while True:
         screen.blit(score_value_surface, score_value_surface.get_rect(centerx=score_rect.centerx, centery=score_rect.centery))
         pygame.draw.rect(screen, Colors.light_blue, next_rect, 0, 10)
         game.draw(screen)
-        pygame.display.update()
-
+        pygame.display.flip()
     clock.tick(60)
