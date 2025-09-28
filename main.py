@@ -46,8 +46,14 @@ while True:
     if game.game_over:
         if game.score == 0:
             draw_start_screen(screen, title_font)
+            score_value = title_font.render("Score: "+str(game.score), True, Colors.white)
+            screen.blit(score_value, (195, 295))
+            pygame.display.update()
         else:
             draw_game_over_screen(screen, title_font)
+            score_value = title_font.render("Score: "+str(game.score), True, Colors.white)
+            screen.blit(score_value, (180, 295))
+            pygame.display.update()
     else:
         score_value_surface = title_font.render(str(game.score), True, Colors.white)
         screen.fill(Colors.dark_blue)
@@ -58,5 +64,4 @@ while True:
         pygame.draw.rect(screen, Colors.light_blue, next_rect, 0, 10)
         game.draw(screen)
         pygame.display.update()
-
     clock.tick(60)
